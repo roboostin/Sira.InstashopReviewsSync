@@ -1,0 +1,16 @@
+﻿services:
+  API:
+    image: API
+    restart: unless-stopped 
+    ports:
+      - '8090:8080'
+    networks:
+      - default_network
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+
+networks:
+  default_network:
+    driver: bridge
+    external: true 

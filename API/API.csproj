@@ -1,0 +1,184 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Application\Configuration\**" />
+      <Compile Remove="Application\Features\Analytics\**" />
+      <Compile Remove="Application\Features\Common\SeveritiesSLA\**" />
+      <Compile Remove="Application\Features\CompanySMSConfiguration\**" />
+      <Compile Remove="Application\Features\IncentiveTypes\**" />
+      <Compile Remove="Application\Features\Incidents\**" />
+      <Compile Remove="Application\Features\Incident\**" />
+      <Compile Remove="Application\Features\Locations\GetMrsoolReviews\**" />
+      <Compile Remove="Application\Features\LogIncident\**" />
+      <Compile Remove="Application\Features\Order\**" />
+      <Compile Remove="Application\Features\SeveritiesSLA\**" />
+      <Compile Remove="Application\Features\Severity\**" />
+      <Compile Remove="Application\Features\SMS\**" />
+      <Compile Remove="Application\Features\SurveyProblemTags\**" />
+      <Compile Remove="Application\Features\Threats\**" />
+      <Compile Remove="Application\Features\UserTeam\**" />
+      <Compile Remove="Application\Features\User\**" />
+      <Compile Remove="Application\Interfaces\Services\**" />
+      <Compile Remove="Domain\Enums\Logging\**" />
+      <Compile Remove="Domain\ValueObjects\**" />
+      <Compile Remove="EndPoints\GooglePresence\**" />
+      <Compile Remove="EndPoints\Incident\**" />
+      <Compile Remove="EndPoints\Item\**" />
+      <Compile Remove="EndPoints\SeveritiesSLA\**" />
+      <Compile Remove="Jobs\**" />
+      <Content Remove="Application\Configuration\**" />
+      <Content Remove="Application\Features\Analytics\**" />
+      <Content Remove="Application\Features\Common\SeveritiesSLA\**" />
+      <Content Remove="Application\Features\CompanySMSConfiguration\**" />
+      <Content Remove="Application\Features\IncentiveTypes\**" />
+      <Content Remove="Application\Features\Incidents\**" />
+      <Content Remove="Application\Features\Incident\**" />
+      <Content Remove="Application\Features\Locations\GetMrsoolReviews\**" />
+      <Content Remove="Application\Features\LogIncident\**" />
+      <Content Remove="Application\Features\Order\**" />
+      <Content Remove="Application\Features\SeveritiesSLA\**" />
+      <Content Remove="Application\Features\Severity\**" />
+      <Content Remove="Application\Features\SMS\**" />
+      <Content Remove="Application\Features\SurveyProblemTags\**" />
+      <Content Remove="Application\Features\Threats\**" />
+      <Content Remove="Application\Features\UserTeam\**" />
+      <Content Remove="Application\Features\User\**" />
+      <Content Remove="Application\Interfaces\Services\**" />
+      <Content Remove="Domain\Enums\Logging\**" />
+      <Content Remove="Domain\ValueObjects\**" />
+      <Content Remove="EndPoints\GooglePresence\**" />
+      <Content Remove="EndPoints\Incident\**" />
+      <Content Remove="EndPoints\Item\**" />
+      <Content Remove="EndPoints\SeveritiesSLA\**" />
+      <Content Remove="Jobs\**" />
+      <EmbeddedResource Remove="Application\Configuration\**" />
+      <EmbeddedResource Remove="Application\Features\Analytics\**" />
+      <EmbeddedResource Remove="Application\Features\Common\SeveritiesSLA\**" />
+      <EmbeddedResource Remove="Application\Features\CompanySMSConfiguration\**" />
+      <EmbeddedResource Remove="Application\Features\IncentiveTypes\**" />
+      <EmbeddedResource Remove="Application\Features\Incidents\**" />
+      <EmbeddedResource Remove="Application\Features\Incident\**" />
+      <EmbeddedResource Remove="Application\Features\Locations\GetMrsoolReviews\**" />
+      <EmbeddedResource Remove="Application\Features\LogIncident\**" />
+      <EmbeddedResource Remove="Application\Features\Order\**" />
+      <EmbeddedResource Remove="Application\Features\SeveritiesSLA\**" />
+      <EmbeddedResource Remove="Application\Features\Severity\**" />
+      <EmbeddedResource Remove="Application\Features\SMS\**" />
+      <EmbeddedResource Remove="Application\Features\SurveyProblemTags\**" />
+      <EmbeddedResource Remove="Application\Features\Threats\**" />
+      <EmbeddedResource Remove="Application\Features\UserTeam\**" />
+      <EmbeddedResource Remove="Application\Features\User\**" />
+      <EmbeddedResource Remove="Application\Interfaces\Services\**" />
+      <EmbeddedResource Remove="Domain\Enums\Logging\**" />
+      <EmbeddedResource Remove="Domain\ValueObjects\**" />
+      <EmbeddedResource Remove="EndPoints\GooglePresence\**" />
+      <EmbeddedResource Remove="EndPoints\Incident\**" />
+      <EmbeddedResource Remove="EndPoints\Item\**" />
+      <EmbeddedResource Remove="EndPoints\SeveritiesSLA\**" />
+      <EmbeddedResource Remove="Jobs\**" />
+      <None Remove="Application\Configuration\**" />
+      <None Remove="Application\Features\Analytics\**" />
+      <None Remove="Application\Features\Common\SeveritiesSLA\**" />
+      <None Remove="Application\Features\CompanySMSConfiguration\**" />
+      <None Remove="Application\Features\IncentiveTypes\**" />
+      <None Remove="Application\Features\Incidents\**" />
+      <None Remove="Application\Features\Incident\**" />
+      <None Remove="Application\Features\Locations\GetMrsoolReviews\**" />
+      <None Remove="Application\Features\LogIncident\**" />
+      <None Remove="Application\Features\Order\**" />
+      <None Remove="Application\Features\SeveritiesSLA\**" />
+      <None Remove="Application\Features\Severity\**" />
+      <None Remove="Application\Features\SMS\**" />
+      <None Remove="Application\Features\SurveyProblemTags\**" />
+      <None Remove="Application\Features\Threats\**" />
+      <None Remove="Application\Features\UserTeam\**" />
+      <None Remove="Application\Features\User\**" />
+      <None Remove="Application\Interfaces\Services\**" />
+      <None Remove="Domain\Enums\Logging\**" />
+      <None Remove="Domain\ValueObjects\**" />
+      <None Remove="EndPoints\GooglePresence\**" />
+      <None Remove="EndPoints\Incident\**" />
+      <None Remove="EndPoints\Item\**" />
+      <None Remove="EndPoints\SeveritiesSLA\**" />
+      <None Remove="Jobs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="DotNetCore.CAP" Version="8.3.3" />
+        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="8.3.3" />
+        <PackageReference Include="DotNetCore.CAP.PostgreSql" Version="8.3.3" />
+        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="8.3.3" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+        <PackageReference Include="Google.Apis.Auth.AspNetCore3" Version="1.65.0" />
+        <PackageReference Include="Google.Apis.MyBusinessBusinessInformation.v1" Version="1.70.0.3856" />
+        <PackageReference Include="Hangfire" Version="1.8.17" />
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.8.17" />
+        <PackageReference Include="Hangfire.PostgreSql" Version="1.20.10" />
+        <PackageReference Include="Hangfire.Redis.StackExchange" Version="1.9.4" />
+        <PackageReference Include="Hangfire.SqlServer" Version="1.8.17" />
+        <PackageReference Include="IdGen" Version="3.0.7" />
+        <PackageReference Include="LinqKit" Version="1.3.8" />
+        <PackageReference Include="MediatR" Version="12.4.1" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Caching.Hybrid" Version="9.0.0-preview.7.24406.2" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.2" />
+        <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.2" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="9.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="9.0.1" />
+        <PackageReference Include="AspNetCore.HealthChecks.Npgsql" Version="9.0.0" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI" Version="9.0.0" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
+        <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.6.0" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.6.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+        <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.5.4" />
+        <PackageReference Include="MiniProfiler.EntityFrameworkCore" Version="4.5.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3" />
+        <PackageReference Include="Polly" Version="8.5.2" />
+        <PackageReference Include="Polly.Extensions.Http" Version="3.0.0" />
+        <PackageReference Include="Quartz" Version="3.14.0" />
+        <PackageReference Include="Quartz.Extensions.Hosting" Version="3.14.0" />
+        <PackageReference Include="Quartz.Plugins" Version="3.14.0" />
+        <PackageReference Include="Quartz.Serialization.Json" Version="3.14.0" />
+        <PackageReference Include="QuestPDF" Version="2025.7.1" />
+        <PackageReference Include="RabbitMQ.Client" Version="7.0.0" />
+        <PackageReference Include="RestSharp" Version="106.15.0" />
+        <PackageReference Include="Scalar.AspNetCore" Version="2.0.4" />
+        <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+        <PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+        <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.0" />
+        <PackageReference Include="UAParser" Version="3.1.47" />
+        <PackageReference Include="UUIDNext" Version="4.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Filters\" />
+      <Folder Include="Infrastructure\Mapping\" />
+    </ItemGroup>
+
+    <ProjectExtensions><VisualStudio><UserProperties config_4hangfire_4appsettings_1hangfire_1development_1json__JsonSchema="https://www.schemastore.org/appveyor.json" /></VisualStudio></ProjectExtensions>
+
+</Project>
