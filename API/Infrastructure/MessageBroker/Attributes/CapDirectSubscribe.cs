@@ -5,9 +5,9 @@ namespace API.Infrastructure.MessageBroker.Attributes
 {
     public class CapDirectSubscribe : CapSubscribeAttribute
     {
-        public CapDirectSubscribe() : base(ConfigurationHelper.GetTalabatMessageBrokerRoutingKey())
+        public CapDirectSubscribe() : base(ConfigurationHelper.GetInstashopMessageBrokerRoutingKey())
         {
-            Group = ConfigurationHelper.GetTalabatMessageBrokerQueue();
+            Group = ConfigurationHelper.GetInstashopMessageBrokerQueue();
         }
     }
 }

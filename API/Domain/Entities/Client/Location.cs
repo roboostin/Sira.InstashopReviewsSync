@@ -9,7 +9,8 @@ namespace API.Domain.Entities
     {
         [MaxLength(100)]
         public string Name { get; set; }
-        public List<int> TalabatLocationIDs { get; set; }
+        public string InstashopClientId { get; set; }
+        public double InstashopAverageRating { get; set; }
         public bool IsActive { get; set; } = true;
         public DateTime? LastScrapeAttemptTime { get; set; }
         public DateTime? LastSuccessfulScrapeTime { get; set; }

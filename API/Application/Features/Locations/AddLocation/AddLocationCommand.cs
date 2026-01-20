@@ -8,7 +8,7 @@ namespace API.Application.Features.Locations.AddLocation
     public record AddLocationCommand(
         long ID,
         string Name,
-        List<int> TalabatLocationIDs,
+        string InstashopClientId,
         long CompanyID,
         DateTime CreatedAt,
         long CreatedBy,
@@ -30,7 +30,7 @@ namespace API.Application.Features.Locations.AddLocation
             {
                 ID = request.ID,
                 Name = request.Name,
-                TalabatLocationIDs = request.TalabatLocationIDs,
+                InstashopClientId = request.InstashopClientId,
                 CompanyID = request.CompanyID,
                 CreatedAt = request.CreatedAt,
                 CreatedBy = request.CreatedBy,

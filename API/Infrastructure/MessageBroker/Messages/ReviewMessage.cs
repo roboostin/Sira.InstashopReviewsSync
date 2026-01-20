@@ -12,7 +12,7 @@ namespace API.Infrastructure.MessageBroker.Messages
         public string ReviewerName { get; set; }
         public DateTime PublishedAt { get; set; }
         public DateOnly ReviewDate { get; set; }
-        public SourceType Source { get; set; } = SourceType.Talabat;
+        public SourceType Source { get; set; } = SourceType.Instashop;
         public string Sentiment { get; set; }
         public long? ChannelID { get; set; }
         public int Rate { get; set; }

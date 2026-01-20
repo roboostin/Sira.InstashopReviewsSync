@@ -9,7 +9,7 @@ public enum SourceType
     [DescriptionAnnotation("QRCode", "QRCode")]
     QRCode = 2,
     [DescriptionAnnotation("SMS", "SMS")]
-    SMS = 3,    
+    SMS = 3,
     [DescriptionAnnotation("Google", "Google")]
     Google = 4,
     [DescriptionAnnotation("manual", "manual")]
@@ -26,10 +26,10 @@ public enum SourceType
     Instashop = 10,
     [DescriptionAnnotation("Elmenus", "Elmenus")]
     Elmenus = 11,
-    [DescriptionAnnotation("Ninja","Ninja")]
+    [DescriptionAnnotation("Ninja", "Ninja")]
     Ninja = 12,
-    [DescriptionAnnotation("Noon","Noon")]
+    [DescriptionAnnotation("Noon", "Noon")]
     Noon = 13,
-    [DescriptionAnnotation("Careem","Careem")]
+    [DescriptionAnnotation("Careem", "Careem")]
     Careem = 14,
 }

@@ -5,8 +5,8 @@ namespace API.Infrastructure.MessageBroker.Attributes;
 
 public class ACKSubscribe : CapSubscribeAttribute
 {
-    public ACKSubscribe() : base(ConfigurationHelper.GetTalabatMessageBrokerACKRoutingKey())
+    public ACKSubscribe() : base(ConfigurationHelper.GetInstashopMessageBrokerACKRoutingKey())
     {
-        Group = ConfigurationHelper.GetTalabatMessageBrokerQueue();
+        Group = ConfigurationHelper.GetInstashopMessageBrokerQueue();
     }
 }

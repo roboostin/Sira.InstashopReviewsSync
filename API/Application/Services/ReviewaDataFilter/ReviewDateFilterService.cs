@@ -61,67 +61,6 @@
             }
         }
 
-        public bool IsWithinLast24HoursTalabat(string dateText)
-        {
-            if (string.IsNullOrEmpty(dateText))
-                return false;
-
-            try
-            {
-                // Based on the example "28 October 2025", try to parse the date
-                if (DateTime.TryParse(dateText, out DateTime reviewDate))
-                {
-                    var now = DateTime.UtcNow;
-                    var cutoffTime = now.AddDays(-1); // 24 hours ago from now
-
-                    _logger.LogDebug("Checking Talabat review date: {ReviewDate} against cutoff: {CutoffTime} (Now: {Now})",
-                        reviewDate, cutoffTime, now);
-
-                    // If the parsed date has no time component (00:00:00), we assume it could be any time during that day
-                    // So we check if the review date is within the last 24 hours OR if it's from today/yesterday
-                    if (reviewDate.TimeOfDay == TimeSpan.Zero)
-                    {
-                        // Date only (no time) - check if it's today or yesterday
-                        var yesterday = now.Date.AddDays(-1);
-                        var today = now.Date;
-                        bool isRecentDate = reviewDate.Date >= yesterday && reviewDate.Date <= today;
-
-                        _logger.LogDebug("Date-only Talabat review: {ReviewDate}, Yesterday: {Yesterday}, Today: {Today}, IsRecent: {IsRecent}",
-                            reviewDate.Date, yesterday, today, isRecentDate);
-
-                        return isRecentDate;
-                    }
-                    else
-                    {
-                        // Date with time - use precise 24-hour check
-                        bool isWithin24Hours = reviewDate >= cutoffTime;
-
-                        _logger.LogDebug("Date-time Talabat review: {ReviewDate}, Cutoff: {CutoffTime}, IsWithin24Hours: {IsWithin24Hours}",
-                            reviewDate, cutoffTime, isWithin24Hours);
-
-                        return isWithin24Hours;
-                    }
-                }
-
-                // Fallback: Check for Arabic time indicators within 24 hours
-                bool isHours = HourWords.Any(word => dateText.Contains(word, StringComparison.OrdinalIgnoreCase));
-                bool isMinutes = MinuteWords.Any(word => dateText.Contains(word, StringComparison.OrdinalIgnoreCase));
-                bool isSeconds = SecondWords.Any(word => dateText.Contains(word, StringComparison.OrdinalIgnoreCase));
-
-                bool isArabicTimeIndicator = isHours || isMinutes || isSeconds;
-
-                _logger.LogDebug("Arabic time indicator check for Talabat '{DateText}': Hours={IsHours}, Minutes={IsMinutes}, Seconds={IsSeconds}, Result={Result}",
-                    dateText, isHours, isMinutes, isSeconds, isArabicTimeIndicator);
-
-                return isArabicTimeIndicator;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogInformation(ex, "Error parsing Talabat date: {DateText}", dateText);
-                return false;
-            }
-        }
-
         public bool IsWithinLast24HoursMrsool(string relativeTimeText)
         {
             if (string.IsNullOrEmpty(relativeTimeText))
@@ -134,6 +73,84 @@
             bool isDays = DayWords.Any(word => relativeTimeText.Contains(word, StringComparison.OrdinalIgnoreCase));
 
             return isHours || isMinutes || isSeconds || isDays;
+        }
+
+        public bool IsWithinLast24HoursInstashop(string dateText)
+        {
+            if (string.IsNullOrEmpty(dateText))
+                return false;
+
+            try
+            {
+                // Instashop format: "10/2/2025, 3:10:28 PM"
+                var dateFormats = new[]
+                {
+                    "M/d/yyyy, h:mm:ss tt",
+                    "MM/dd/yyyy, h:mm:ss tt",
+                    "M/d/yyyy, hh:mm:ss tt",
+                    "MM/dd/yyyy, hh:mm:ss tt",
+                    "M/d/yyyy, H:mm:ss",
+                    "MM/dd/yyyy, H:mm:ss"
+                };
+
+                DateTime reviewDate = default;
+                bool parsed = false;
+
+                foreach (var format in dateFormats)
+                {
+                    if (DateTime.TryParseExact(dateText, format, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+                    {
+                        reviewDate = parsedDate;
+                        parsed = true;
+                        break;
+                    }
+                }
+
+                if (!parsed)
+                {
+                    // Try general parsing as fallback
+                    if (!DateTime.TryParse(dateText, out DateTime parsedDate))
+                    {
+                        _logger.LogInformation("Could not parse Instashop date string: {DateText}", dateText);
+                        return false;
+                    }
+                    reviewDate = parsedDate;
+                }
+
+                // Convert parsed date to UTC
+                // Instashop dates are typically in local timezone (EET - UTC+2), so we assume Local and convert to UTC
+                if (reviewDate.Kind == DateTimeKind.Unspecified)
+                {
+                    // Assume the date is in local timezone (EET) and convert to UTC
+                    // If the server is in a different timezone, adjust accordingly
+                    reviewDate = DateTime.SpecifyKind(reviewDate, DateTimeKind.Local);
+                    reviewDate = reviewDate.ToUniversalTime();
+                }
+                else if (reviewDate.Kind == DateTimeKind.Local)
+                {
+                    reviewDate = reviewDate.ToUniversalTime();
+                }
+                // If already UTC, no conversion needed
+
+                var now = DateTime.UtcNow;
+                var cutoffTime = now.AddDays(-1); // 24 hours ago from now
+
+                _logger.LogDebug("Checking Instashop review date: {ReviewDate} (UTC) against cutoff: {CutoffTime} (Now: {Now})",
+                    reviewDate, cutoffTime, now);
+
+                // Check if the review date is within the last 24 hours
+                bool isWithin24Hours = reviewDate >= cutoffTime;
+
+                _logger.LogDebug("Instashop review date: {ReviewDate}, Cutoff: {CutoffTime}, IsWithin24Hours: {IsWithin24Hours}",
+                    reviewDate, cutoffTime, isWithin24Hours);
+
+                return isWithin24Hours;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex, "Error parsing Instashop date: {DateText}", dateText);
+                return false;
+            }
         }
     }
 }

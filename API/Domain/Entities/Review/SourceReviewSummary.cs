@@ -1,13 +1,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using API.Domain.Enums;
 
 namespace API.Domain.Entities.Review;
 
 [Table(name: "SourceReviewSummary", Schema = "Review")]
 public class SourceReviewSummary : BaseEntity
 {
-    public double? TalabatAvgRating { get; set; }
-    public int? TalabatTotalResponses { get; set; }
+    public double? InstashopAvgRating { get; set; }
+    public int? InstashopTotalResponses { get; set; }
     public DateOnly Date { get; set; }
     public long LocationID { get; set; }
     public double AvgRate { get; set; }

@@ -9,8 +9,8 @@ namespace API.EndPoints.Locations
     {
         public override void RegisterEndpoints(IEndpointRouteBuilder app)
         {
-            app.MapPost("/Location/AddLocationsFromTalabat",
-                async (List<TalabatServiceLocationDTO> locations, IMediator mediator, CancellationToken cancellationToken) =>
+            app.MapPost("/Location/AddLocationsFromInstashop",
+                async (List<InstashopServiceLocationDTO> locations, IMediator mediator, CancellationToken cancellationToken) =>
                 {
                     if (locations == null || locations.Count == 0)
                     {
@@ -18,14 +18,14 @@ namespace API.EndPoints.Locations
                     }
 
                     var result = await mediator.Send(
-                        new UpsertLocationsFromTalabatCommand(locations),
+                        new UpsertLocationsFromInstashopCommand(locations),
                         cancellationToken);
 
                     return Response(result);
                 })
             .WithTags("Location")
-            .WithName("AddLocationsFromTalabat")
-            .Accepts<List<TalabatServiceLocationDTO>>("application/json")
+            .WithName("AddLocationsFromInstashop")
+            .Accepts<List<InstashopServiceLocationDTO>>("application/json")
             .Produces<EndPointResponse<bool>>();
         }
     }

@@ -4,8 +4,8 @@
     {
         bool IsWithinLast24HoursElmenus(string? dateString);
 
-        bool IsWithinLast24HoursTalabat(string dateText);
-
         bool IsWithinLast24HoursMrsool(string relativeTimeText);
+
+        bool IsWithinLast24HoursInstashop(string dateText);
     }
 }

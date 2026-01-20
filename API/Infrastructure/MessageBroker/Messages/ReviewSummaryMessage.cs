@@ -9,6 +9,6 @@ namespace API.Infrastructure.MessageBroker.Messages
         public long CompanyID { get; set; }
         public double Rating { get; set; }
         public int TotalResponseCount { get; set; }
-        public SourceType Source { get; set; } = SourceType.Talabat;
+        public SourceType Source { get; set; } = SourceType.Instashop;
     }
 }

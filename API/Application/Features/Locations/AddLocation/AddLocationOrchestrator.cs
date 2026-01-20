@@ -1,4 +1,4 @@
-﻿using API.Application.Features.Locations.LaunchTalabatReviewScraper.Commands;
+﻿using API.Application.Features.Locations.LaunchInstashopReviewScraper.Commands;
 using API.Shared.Models;
 using MediatR;
 
@@ -7,7 +7,7 @@ namespace API.Application.Features.Locations.AddLocation
     public record AddLocationOrchestrator(
         long ID,
         string Name,
-        List<int> TalabatLocationIDs,
+        string InstashopClientId,
         long CompanyID,
         DateTime CreatedAt,
         long CreatedBy,
@@ -25,16 +25,21 @@ namespace API.Application.Features.Locations.AddLocation
 
         public async Task<RequestResult<Unit>> Handle(AddLocationOrchestrator request, CancellationToken cancellationToken)
         {
-            await mediator.Send(new AddLocationCommand(request.ID, request.Name, request.TalabatLocationIDs
+            await mediator.Send(new AddLocationCommand(request.ID, request.Name, request.InstashopClientId
                 , request.CompanyID, request.CreatedAt, request.CreatedBy));
 
-            await mediator.Send(new LaunchTalabatReviewScraperOrchestrator(
-                request.ID,
-                request.TalabatLocationIDs,
-                DateTime.Now.AddMonths(-3),
-                request.Name,
-                request.CompanyID
-            ));
+            if (!string.IsNullOrEmpty(request.InstashopClientId))
+            {
+                await mediator.Send(new LaunchInstashopReviewScraperOrchestrator(
+                    request.ID,
+                    request.InstashopClientId,
+                    DateTime.UtcNow.AddMonths(-3),
+                    request.Name,
+                    request.CompanyID,
+                    20, // LimitPerRequest
+                    50  // MaxReviews
+                ));
+            }
 
             return RequestResult<Unit>.Success();
         }

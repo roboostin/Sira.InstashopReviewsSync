@@ -15,7 +15,7 @@ namespace API.Infrastructure.MessageBroker.Consumers
         }
         public async Task Consume(CreatedLocationMessage message)
         {
-            await mediator.Send(new AddLocationOrchestrator(message.LocationID, message.LocationName, message.TalabatLocationsIDs
+            await mediator.Send(new AddLocationOrchestrator(message.LocationID, message.LocationName, message.InstashopClientId
                 , message.CompanyID, message.MessageCreatedDate, message.UserID));
         }
     }

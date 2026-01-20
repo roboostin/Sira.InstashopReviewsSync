@@ -96,14 +96,14 @@ public static class ConfigurationHelper
         return GetConfigurationValue("MessageBroker:RoutingKey");
     }
 
-    public static string GetTalabatMessageBrokerRoutingKey()
+    public static string GetInstashopMessageBrokerRoutingKey()
     {
-        return $"{GetConfigurationValue("MessageBroker:RoutingKey")}.talabat";
+        return $"{GetConfigurationValue("MessageBroker:RoutingKey")}.instashop";
     }
 
-    public static string GetTalabatMessageBrokerACKRoutingKey()
+    public static string GetInstashopMessageBrokerACKRoutingKey()
     {
-        return $"{GetConfigurationValue("MessageBroker:RoutingKey")}.talabat.review.ack";
+        return $"{GetConfigurationValue("MessageBroker:RoutingKey")}.instashop.review.ack";
     }
 
     public static string GetMessageBrokerRoutingKeyPrefix()
@@ -116,9 +116,9 @@ public static class ConfigurationHelper
         return GetConfigurationValue("MessageBroker:Queue");
     }
 
-    public static string GetTalabatMessageBrokerQueue()
+    public static string GetInstashopMessageBrokerQueue()
     {
-        return $"{GetConfigurationValue("MessageBroker:Queue")}.talabat";
+        return $"{GetConfigurationValue("MessageBroker:Queue")}.instashop";
     }
 
     public static (string host, string username, string password) GetRabbitMQCredentials()

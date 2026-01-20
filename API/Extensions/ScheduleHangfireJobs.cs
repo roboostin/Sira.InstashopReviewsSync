@@ -15,12 +15,11 @@ namespace API.Extensions
             {
                 var recurringJobManager = app.ApplicationServices.GetRequiredService<IRecurringJobManager>();
 
-                //Schedule Talabat recent reviews job to run daily at 7 PM
-                recurringJobManager.AddOrUpdate<TalabatRecentReviewsScheduler>(
-                    "TalabatRecentReviewsScheduler",
+                //Schedule Instashop recent reviews job to run daily at 8 PM
+                recurringJobManager.AddOrUpdate<InstashopRecentReviewsScheduler>(
+                    "InstashopRecentReviewsScheduler",
                     job => job.Execute(),
-                    "11 * * * *"
-                //"0 19 * * *" // Run at 7:00 PM every day (19:00)
+                    "0 20 * * *" // Run at 8:00 PM every day (20:00)
                 );
 
                 //BackgroundJob.Enqueue<ProcessNonProcessedReviewsScheduler>(job => job.Execute());
@@ -33,9 +32,9 @@ namespace API.Extensions
                         "1 * * * *" // Run every hour at minute 0
                     );
 
-                //Schedule check Talabat location scrape status job to run every hour
-                recurringJobManager.AddOrUpdate<CheckTalabatLocationScrapeStatusScheduler>(
-                    "CheckTalabatLocationScrapeStatusScheduler",
+                //Schedule check Instashop location scrape status job to run every hour
+                recurringJobManager.AddOrUpdate<CheckInstashopLocationScrapeStatusScheduler>(
+                    "CheckInstashopLocationScrapeStatusScheduler",
                     job => job.Execute(),
                     "30 * * * *" // Run every hour at minute 30
                 );
