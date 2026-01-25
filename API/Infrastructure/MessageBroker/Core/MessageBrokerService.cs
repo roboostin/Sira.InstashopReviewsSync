@@ -22,7 +22,6 @@ public class MessageBrokerService(IMediator mediator, ILogger<MessageBrokerServi
 
     [ACKSubscribe]
     [CapDirectSubscribe]
-    //[CapFanoutSubscribe]
     public async Task Consume(string message)
     {
         if (bool.TryParse(configuration["MessageBroker:Enabled"], out var isEnabled) && !isEnabled)
